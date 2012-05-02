@@ -4,7 +4,8 @@
   "manifest_version": 2,
   "description": "Post First is a helpful browser extension that checks your social networks to see if someone has already posted your current URL. Now your friends will never now you're behind the curve.",
   "browser_action": {
-    "default_icon": "icon.png"
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
   },
   "permissions": [
     "tabs",
