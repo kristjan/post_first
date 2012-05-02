@@ -1,3 +1,22 @@
-body {
+div {
   width: 400px;
+}
+.checking {
+  width: 340px;
+  min-height: 50px;
+  padding-left: 60px;
+  background: transparent url('/img/spinner.gif') no-repeat left center;
+}
+
+.checking .url {
+  color: #666;
+}
+
+.error {
+  padding: 10px;
+  background-color: #F99;
+}
+
+.hidden {
+  display: none;
 }

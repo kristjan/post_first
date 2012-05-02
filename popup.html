@@ -5,8 +5,24 @@
     <link rel="stylesheet" type="text/css" href="/css/popup.css" />
   </head>
   <body>
-    <div id="content"></div>
+    <div id="checking" class="checking">
+      Sweeping your networks for<br />
+      <span class="url">&nbsp;</span>
+    </div>
+    <div id="already_posted" class="hidden">
+      This has already been posted by
+      <ul class="posters">
+      </ul>
+    </div>
+    <div id="post" class="hidden">
+      You're in the clear, go ahead and share it!
+    </div>
+    <div id="error" class="error hidden">
+      Did I say sweeping? More like weeping.<br />
+      Sorry, dude, something went wrong.
+    </div>
     <script src="/js/jquery.min.js"></script>
+    <script src="/js/underscore.min.js"></script>
     <script src="/oauth2/oauth2.js"></script>
     <script src="/js/popup.js"></script>
   </body>
