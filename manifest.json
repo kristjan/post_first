@@ -7,8 +7,15 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": ["https://carealot.singly.com/robots.txt*"],
+      "js": ["oauth2/oauth2_inject.js"],
+      "run_at": "document_start"
+    }
+  ],
   "permissions": [
     "tabs",
-    "*://*.singly.com"
+    "*://*.singly.com*"
   ]
 }
