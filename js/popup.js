@@ -15,9 +15,10 @@ PostFirst = (function() {
   }
 
   function fetchLinks(done) {
-    $.getJSON(api('/services/twitter/timeline', {
+    $.getJSON(api('/services/twitter/timeline'), {
+      access_token: auth.getAccessToken(),
       limit: 300
-    }), function(tweets) {
+    }, function(tweets) {
       var links = {};
       _.each(tweets, function(tweet) {
         var urls = tweet.data.entities.urls;
@@ -43,10 +44,8 @@ PostFirst = (function() {
     });
   }
 
-  function api(path, options) {
-    if (!options) options = {};
-    options.access_token = auth.getAccessToken();
-    return API_HOST + path + '?' + $.param(options);
+  function api(path) {
+    return API_HOST + path;
   }
 
   function error() {
