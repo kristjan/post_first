@@ -28,7 +28,8 @@ PostFirst = (function() {
           if (url) {
             if (!links[url]) links[url] = [];
             links[url].push({
-              name: tweet.data.user.name
+              name: tweet.data.user.name,
+              time: tweet.data.created_at
             });
           }
         });
@@ -37,10 +38,16 @@ PostFirst = (function() {
     }).error(error);
   }
 
+  var TIME_EX = /[^\s]+ ([^\s]+ [^\s]+) .*/;
   function fillPosters(posters) {
     var list = $('#already_posted .posters');
     _.each(posters, function(poster) {
-      list.append($('<li>').text(poster.name));
+      list.append($('<li>').append(
+        $('<span>', {'class': 'name'})
+          .text(poster.name),
+        $('<span>', {'class': 'time'})
+          .text(' on ' + poster.time.match(TIME_EX)[1])
+      ));
     });
   }
 

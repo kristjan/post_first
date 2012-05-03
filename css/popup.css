@@ -1,3 +1,6 @@
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
 div {
   width: 400px;
 }
@@ -19,4 +22,14 @@ div {
 
 .hidden {
   display: none;
+}
+
+.posters {
+  margin: 0;
+  list-style-type: none;
+}
+
+.posters .time {
+  color: #666;
+  font-size: 12px;
 }
