@@ -9,14 +9,14 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://carealot.singly.com/robots.txt*"],
+      "matches": ["https://api.singly.com/robots.txt*"],
       "js": ["oauth2/oauth2_inject.js"],
       "run_at": "document_start"
     }
   ],
   "permissions": [
     "tabs",
-    "https://*.singly.com/"
+    "https://api.singly.com/"
   ],
-  "content_security_policy": "script-src 'self' https://carealot.singly.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://api.singly.com; object-src 'self'"
 }

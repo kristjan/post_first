@@ -1,5 +1,5 @@
 PostFirst = (function() {
-  var API_HOST = 'https://carealot.singly.com';
+  var API_HOST = 'https://api.singly.com';
 
   function check(tab) {
     $('#checking .url').text(tab.title);
@@ -65,9 +65,9 @@ PostFirst = (function() {
 })();
 
 var auth = new OAuth2('singly', {
-  client_id: 'postfirst',
-  client_secret: '46486d124edb2bafa8f7f429a91cd',
-  api_scope: 'twitter'
+  client_id: '78a8e12f4d819b10cf1b039565263a74',
+  client_secret: 'b9243d5314e6edc7dd3b6f207bcfaff0',
+  api_scope: 'facebook'
 });
 
 auth.authorize(function() {

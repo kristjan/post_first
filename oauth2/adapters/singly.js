@@ -3,7 +3,7 @@ OAuth2.adapter('singly', {
    * @return {URL} URL to the page that returns the authorization code
    */
   authorizationCodeURL: function(config) {
-    return ('https://carealot.singly.com/oauth/authorize' +
+    return ('https://api.singly.com/oauth/authorize' +
             '?client_id={{CLIENT_ID}}' +
             '&redirect_uri={{REDIRECT_URI}}' +
             '&service={{SERVICE}}')
@@ -17,7 +17,7 @@ OAuth2.adapter('singly', {
    * script into
    */
   redirectURL: function(config) {
-    return 'https://carealot.singly.com/robots.txt';
+    return 'https://api.singly.com/robots.txt';
   },
 
   /**
@@ -31,7 +31,7 @@ OAuth2.adapter('singly', {
    * @return {URL} URL to the access token providing endpoint
    */
   accessTokenURL: function() {
-    return 'https://carealot.singly.com/oauth/access_token';
+    return 'https://api.singly.com/oauth/access_token';
   },
 
   /**
