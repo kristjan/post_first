@@ -15,30 +15,24 @@ PostFirst = (function() {
   }
 
   function fetchLinks(done) {
-    $.getJSON(api('/services/twitter/timeline'), {
+    $.getJSON(api('/types/news'), {
       access_token: auth.getAccessToken(),
       limit: 300
-    }, function(tweets) {
-      var links = {};
-      _.each(tweets, function(tweet) {
-        var urls = tweet.data.entities.urls;
-        _.each(urls, function(url) {
-          url = url.expanded_url;
-          console.log(tweet, url);
-          if (url) {
-            if (!links[url]) links[url] = [];
-            links[url].push({
-              name: tweet.data.user.name,
-              time: tweet.data.created_at
-            });
-          }
-        });
+    }, function(links) {
+      _.each(links, function(link) {
+        var url = link.data.link;
+        if (url) {
+          if (!links[url]) links[url] = [];
+          links[url].push({
+            name: link.data.from.name,
+            time: link.data.created_time
+          });
+        }
       });
       done(links);
     }).error(error);
   }
 
-  var TIME_EX = /[^\s]+ ([^\s]+ [^\s]+) .*/;
   function fillPosters(posters) {
     var list = $('#already_posted .posters');
     _.each(posters, function(poster) {
@@ -46,7 +40,7 @@ PostFirst = (function() {
         $('<span>', {'class': 'name'})
           .text(poster.name),
         $('<span>', {'class': 'time'})
-          .text(' on ' + poster.time.match(TIME_EX)[1])
+          .text(' on ' + new Date(poster.time * 1000))
       ));
     });
   }
