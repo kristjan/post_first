@@ -1,7 +1,15 @@
-PostFirst = (function() {
-  var API_HOST = 'https://api.singly.com';
+if (typeof PostFirst === 'undefined') PostFirst = {};
+
+PostFirst.Popup = (function() {
 
   function check(tab) {
+    var token = PostFirst.Util.accessToken();
+    if (!token) {
+      chrome.tabs.create({
+        url: 'options.html'
+      });
+      return;
+    }
     $('#checking .url').text(tab.title);
     fetchLinks(function(links) {
       var link = links[tab.url];
@@ -15,8 +23,8 @@ PostFirst = (function() {
   }
 
   function fetchLinks(done) {
-    $.getJSON(api('/types/news'), {
-      access_token: auth.getAccessToken(),
+    $.getJSON(PostFirst.Util.api('/types/news'), {
+      access_token: PostFirst.Util.accessToken(),
       limit: 300
     }, function(links) {
       _.each(links, function(link) {
@@ -45,9 +53,6 @@ PostFirst = (function() {
     });
   }
 
-  function api(path) {
-    return API_HOST + path;
-  }
 
   function error() {
     $('#checking, #error').toggle();
@@ -58,14 +63,8 @@ PostFirst = (function() {
   };
 })();
 
-var auth = new OAuth2('singly', {
-  client_id: '78a8e12f4d819b10cf1b039565263a74',
-  client_secret: 'b9243d5314e6edc7dd3b6f207bcfaff0',
-  api_scope: 'facebook'
-});
-
-auth.authorize(function() {
+$(function() {
   chrome.tabs.getSelected(null, function(tab) {
-    PostFirst.check(tab);
+    PostFirst.Popup.check(tab);
   });
 });
