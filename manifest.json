@@ -1,6 +1,6 @@
 {
   "name": "Post First",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "manifest_version": 2,
   "description": "Post First checks your social networks to see if someone has already posted your current URL.",
   "browser_action": {
